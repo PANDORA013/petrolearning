@@ -316,14 +316,43 @@ const courses = {
 
 // Scroll to courses section
 function scrollToCourses() {
-    document.getElementById('courses').scrollIntoView({ behavior: 'smooth' });
+    const coursesSection = document.getElementById('courses');
+    if (coursesSection) {
+        coursesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+// Handle keyboard navigation for course cards
+function handleCourseKeydown(event, courseId) {
+    if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openCourse(courseId);
+    }
+}
+
+// Handle keyboard navigation for close button
+function handleCloseKeydown(event) {
+    if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        closeModal();
+    }
 }
 
 // Open course modal
 function openCourse(courseId) {
     const course = courses[courseId];
+    if (!course) {
+        console.error('Course not found:', courseId);
+        return;
+    }
+    
     const modal = document.getElementById('courseModal');
     const modalBody = document.getElementById('modalBody');
+    
+    if (!modal || !modalBody) {
+        console.error('Modal elements not found');
+        return;
+    }
     
     let modulesHTML = '';
     course.modules.forEach((module, index) => {
@@ -338,7 +367,7 @@ function openCourse(courseId) {
     });
     
     modalBody.innerHTML = `
-        <h2>${course.title}</h2>
+        <h2 id="modalTitle">${course.title}</h2>
         <p style="margin-bottom: 2rem; color: #666; font-size: 1.1rem;">${course.description}</p>
         <h3 style="color: #1e3c72; margin-bottom: 1rem;">Course Modules</h3>
         ${modulesHTML}
@@ -349,7 +378,7 @@ function openCourse(courseId) {
             </div>
             <div class="quiz-options" id="quizOptions-${courseId}">
                 ${course.quiz.options.map((option, index) => `
-                    <div class="quiz-option" onclick="selectOption(${courseId}, ${index})">
+                    <div class="quiz-option" onclick="selectOption(${courseId}, ${index})" tabindex="0" role="button" aria-label="Option ${index + 1}: ${option}">
                         ${option}
                     </div>
                 `).join('')}
@@ -357,11 +386,19 @@ function openCourse(courseId) {
             <button class="check-answer-btn" onclick="checkAnswer(${courseId})" id="checkBtn-${courseId}" disabled>
                 Check Answer
             </button>
-            <div id="quizResult-${courseId}" style="margin-top: 1rem; font-weight: bold;"></div>
+            <div id="quizResult-${courseId}" style="margin-top: 1rem; font-weight: bold;" role="alert" aria-live="polite"></div>
         </div>
     `;
     
     modal.style.display = 'block';
+    
+    // Focus management for accessibility
+    setTimeout(() => {
+        const closeButton = modal.querySelector('.close');
+        if (closeButton) {
+            closeButton.focus();
+        }
+    }, 100);
 }
 
 // Close modal
@@ -372,7 +409,7 @@ function closeModal() {
 // Close modal when clicking outside
 window.onclick = function(event) {
     const modal = document.getElementById('courseModal');
-    if (event.target == modal) {
+    if (event.target === modal) {
         modal.style.display = 'none';
     }
 }

@@ -41,7 +41,7 @@
                 <h2 class="section-title">Available Courses</h2>
                 <div class="course-grid">
                     <!-- Course 1 -->
-                    <div class="course-card" onclick="openCourse(1)">
+                    <div class="course-card" onclick="openCourse(1)" tabindex="0" onkeydown="handleCourseKeydown(event, 1)" role="button" aria-label="View Petroleum Geology Basics course">
                         <div class="course-icon">⚗️</div>
                         <h3>Petroleum Geology Basics</h3>
                         <p>Learn about rock formations, reservoirs, and hydrocarbon accumulation</p>
@@ -53,7 +53,7 @@
                     </div>
 
                     <!-- Course 2 -->
-                    <div class="course-card" onclick="openCourse(2)">
+                    <div class="course-card" onclick="openCourse(2)" tabindex="0" onkeydown="handleCourseKeydown(event, 2)" role="button" aria-label="View Drilling Engineering course">
                         <div class="course-icon">🔧</div>
                         <h3>Drilling Engineering</h3>
                         <p>Explore drilling techniques, equipment, and safety protocols</p>
@@ -65,7 +65,7 @@
                     </div>
 
                     <!-- Course 3 -->
-                    <div class="course-card" onclick="openCourse(3)">
+                    <div class="course-card" onclick="openCourse(3)" tabindex="0" onkeydown="handleCourseKeydown(event, 3)" role="button" aria-label="View Reservoir Engineering course">
                         <div class="course-icon">📈</div>
                         <h3>Reservoir Engineering</h3>
                         <p>Study fluid flow, pressure analysis, and production optimization</p>
@@ -77,7 +77,7 @@
                     </div>
 
                     <!-- Course 4 -->
-                    <div class="course-card" onclick="openCourse(4)">
+                    <div class="course-card" onclick="openCourse(4)" tabindex="0" onkeydown="handleCourseKeydown(event, 4)" role="button" aria-label="View Production Operations course">
                         <div class="course-icon">🏭</div>
                         <h3>Production Operations</h3>
                         <p>Learn about surface facilities, processing, and production systems</p>
@@ -89,7 +89,7 @@
                     </div>
 
                     <!-- Course 5 -->
-                    <div class="course-card" onclick="openCourse(5)">
+                    <div class="course-card" onclick="openCourse(5)" tabindex="0" onkeydown="handleCourseKeydown(event, 5)" role="button" aria-label="View Environmental & Safety course">
                         <div class="course-icon">🌍</div>
                         <h3>Environmental & Safety</h3>
                         <p>Understand HSE management, regulations, and sustainable practices</p>
@@ -101,7 +101,7 @@
                     </div>
 
                     <!-- Course 6 -->
-                    <div class="course-card" onclick="openCourse(6)">
+                    <div class="course-card" onclick="openCourse(6)" tabindex="0" onkeydown="handleCourseKeydown(event, 6)" role="button" aria-label="View Petroleum Economics course">
                         <div class="course-icon">💡</div>
                         <h3>Petroleum Economics</h3>
                         <p>Analyze project economics, risk assessment, and market dynamics</p>
@@ -166,9 +166,9 @@
     </main>
 
     <!-- Course Modal -->
-    <div id="courseModal" class="modal">
+    <div id="courseModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
+            <span class="close" onclick="closeModal()" aria-label="Close modal" role="button" tabindex="0" onkeydown="handleCloseKeydown(event)">&times;</span>
             <div id="modalBody"></div>
         </div>
     </div>
