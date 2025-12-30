@@ -484,6 +484,13 @@ function handleSubmit(event) {
 
 // Add smooth scroll for all anchor links
 document.addEventListener('DOMContentLoaded', function() {
+    // Set current year in footer
+    const yearElement = document.getElementById('currentYear');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
+    
+    // Smooth scroll for anchor links
     const links = document.querySelectorAll('a[href^="#"]');
     links.forEach(link => {
         link.addEventListener('click', function(e) {
