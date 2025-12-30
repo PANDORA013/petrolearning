@@ -33,8 +33,20 @@ class DashboardController extends Controller
             'course_recommendations' => $this->getCourseRecommendations($userProfile)
         ];
 
+        // Data tambahan untuk dashboard
+        $serverData = [
+            'stats' => [
+                'learning_hours' => 34, // Nanti hitung dari tabel learning_history
+                'certificates' => 5,
+                'avg_score' => 4.2
+            ],
+            'courses' => $this->getMockCourses(), // Simulasi ambil dari DB
+            'employees' => $this->getMockEmployees(), // Simulasi admin data
+        ];
+
         return Inertia::render('Dashboard', [
-            'aiData' => $aiData
+            'aiData' => $aiData,
+            'serverData' => $serverData
         ]);
     }
 
@@ -90,6 +102,26 @@ class DashboardController extends Controller
                     'reason' => 'Meningkatkan kompetensi Leadership'
                 ]
             ]
+        ];
+    }
+
+    // Helper untuk data dummy Database (Sementara)
+    private function getMockCourses()
+    {
+        return [
+            ['id' => 101, 'title' => 'Sertifikasi K3 Tingkat Lanjut', 'category' => 'Safety', 'level' => 'Advanced', 'progress' => 0, 'modules' => 12, 'rating' => 4.8, 'type' => 'GAP', 'xgboost_score' => 95, 'svd_score' => 70],
+            ['id' => 102, 'title' => 'Manajemen Proyek Supervisor', 'category' => 'Manajemen', 'level' => 'Intermediate', 'progress' => 0, 'modules' => 8, 'rating' => 4.5, 'type' => 'GAP', 'xgboost_score' => 92, 'svd_score' => 65],
+            ['id' => 103, 'title' => 'Analisis Kimia Terpadu', 'category' => 'Teknis', 'level' => 'Advanced', 'progress' => 0, 'modules' => 15, 'rating' => 4.9, 'type' => 'GAP', 'xgboost_score' => 88, 'svd_score' => 60],
+            ['id' => 104, 'title' => 'Python Data Science', 'category' => 'IT', 'level' => 'Basic', 'progress' => 0, 'modules' => 10, 'rating' => 4.7, 'type' => 'POPULAR', 'xgboost_score' => 20, 'svd_score' => 95],
+            ['id' => 105, 'title' => 'Leadership 101', 'category' => 'Soft Skill', 'level' => 'Basic', 'progress' => 45, 'modules' => 4, 'rating' => 4.6, 'type' => 'POPULAR', 'xgboost_score' => 40, 'svd_score' => 90],
+        ];
+    }
+
+    private function getMockEmployees()
+    {
+        return [
+            ['id' => 1, 'name' => 'Budi Santoso', 'position' => 'Staff Process', 'unit' => 'Produksi I', 'gap' => 2, 'readiness' => 45],
+            ['id' => 2, 'name' => 'Siti Aminah', 'position' => 'Analyst Lab', 'unit' => 'Quality Control', 'gap' => 0, 'readiness' => 92],
         ];
     }
 }
