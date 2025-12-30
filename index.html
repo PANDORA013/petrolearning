@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetroLearning - E-Learning Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1>🛢️ PetroLearning</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Welcome to PetroLearning</h2>
+                    <p>Master the fundamentals of petroleum engineering and oil & gas industry through interactive online courses</p>
+                    <button class="cta-button" onclick="scrollToCourses()">Explore Courses</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Courses Section -->
+        <section id="courses" class="courses">
+            <div class="container">
+                <h2 class="section-title">Available Courses</h2>
+                <div class="course-grid">
+                    <!-- Course 1 -->
+                    <div class="course-card" onclick="openCourse(1)">
+                        <div class="course-icon">⚗️</div>
+                        <h3>Petroleum Geology Basics</h3>
+                        <p>Learn about rock formations, reservoirs, and hydrocarbon accumulation</p>
+                        <div class="course-meta">
+                            <span class="duration">⏱️ 4 weeks</span>
+                            <span class="level">📊 Beginner</span>
+                        </div>
+                        <button class="course-button">Start Learning</button>
+                    </div>
+
+                    <!-- Course 2 -->
+                    <div class="course-card" onclick="openCourse(2)">
+                        <div class="course-icon">🔧</div>
+                        <h3>Drilling Engineering</h3>
+                        <p>Explore drilling techniques, equipment, and safety protocols</p>
+                        <div class="course-meta">
+                            <span class="duration">⏱️ 6 weeks</span>
+                            <span class="level">📊 Intermediate</span>
+                        </div>
+                        <button class="course-button">Start Learning</button>
+                    </div>
+
+                    <!-- Course 3 -->
+                    <div class="course-card" onclick="openCourse(3)">
+                        <div class="course-icon">📈</div>
+                        <h3>Reservoir Engineering</h3>
+                        <p>Study fluid flow, pressure analysis, and production optimization</p>
+                        <div class="course-meta">
+                            <span class="duration">⏱️ 8 weeks</span>
+                            <span class="level">📊 Advanced</span>
+                        </div>
+                        <button class="course-button">Start Learning</button>
+                    </div>
+
+                    <!-- Course 4 -->
+                    <div class="course-card" onclick="openCourse(4)">
+                        <div class="course-icon">🏭</div>
+                        <h3>Production Operations</h3>
+                        <p>Learn about surface facilities, processing, and production systems</p>
+                        <div class="course-meta">
+                            <span class="duration">⏱️ 5 weeks</span>
+                            <span class="level">📊 Intermediate</span>
+                        </div>
+                        <button class="course-button">Start Learning</button>
+                    </div>
+
+                    <!-- Course 5 -->
+                    <div class="course-card" onclick="openCourse(5)">
+                        <div class="course-icon">🌍</div>
+                        <h3>Environmental & Safety</h3>
+                        <p>Understand HSE management, regulations, and sustainable practices</p>
+                        <div class="course-meta">
+                            <span class="duration">⏱️ 4 weeks</span>
+                            <span class="level">📊 Beginner</span>
+                        </div>
+                        <button class="course-button">Start Learning</button>
+                    </div>
+
+                    <!-- Course 6 -->
+                    <div class="course-card" onclick="openCourse(6)">
+                        <div class="course-icon">💡</div>
+                        <h3>Petroleum Economics</h3>
+                        <p>Analyze project economics, risk assessment, and market dynamics</p>
+                        <div class="course-meta">
+                            <span class="duration">⏱️ 6 weeks</span>
+                            <span class="level">📊 Advanced</span>
+                        </div>
+                        <button class="course-button">Start Learning</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">About PetroLearning</h2>
+                <div class="about-content">
+                    <p>PetroLearning is a comprehensive e-learning platform dedicated to petroleum engineering and oil & gas industry education. Our mission is to provide high-quality, accessible education to students and professionals worldwide.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <span class="feature-icon">🎓</span>
+                            <h4>Expert-Led Courses</h4>
+                            <p>Learn from industry professionals</p>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">📱</span>
+                            <h4>Mobile Friendly</h4>
+                            <p>Study anywhere, anytime</p>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">🏆</span>
+                            <h4>Certificates</h4>
+                            <p>Earn recognized credentials</p>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">🔄</span>
+                            <h4>Interactive Learning</h4>
+                            <p>Hands-on exercises and quizzes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Contact Us</h2>
+                <div class="contact-content">
+                    <p>Have questions? We'd love to hear from you!</p>
+                    <form class="contact-form" onsubmit="handleSubmit(event)">
+                        <input type="text" id="name" placeholder="Your Name" required>
+                        <input type="email" id="email" placeholder="Your Email" required>
+                        <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+                        <button type="submit" class="submit-button">Send Message</button>
+                    </form>
+                    <div id="form-message" class="form-message"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Course Modal -->
+    <div id="courseModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 PetroLearning. All rights reserved.</p>
+            <p>Empowering the next generation of petroleum engineers</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
